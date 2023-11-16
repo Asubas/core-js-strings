@@ -22,7 +22,7 @@
 function getStringLength(/* value */) {
   throw new Error('Not implemented');
 }
-
+console.log('test');
 /**
  * Returns true if the value is a string, otherwise returns false.
  *
