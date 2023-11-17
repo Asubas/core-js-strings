@@ -315,11 +315,15 @@ function containsSubstring(str, substring) {
  *   countVowels('XYZ') => 1
  */
 function countVowels(str) {
+  let count = 0;
   const strToArr = str.split('');
   const Vowels = ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'];
-  for ( let i = 0; i < Vowels.length; i += 1){
-
+  for (let i = 0; i < strToArr.length; i += 1) {
+    if (Vowels.includes(strToArr[i])) {
+      count += 1;
+    }
   }
+  return count;
 }
 
 /**
@@ -335,10 +339,16 @@ function countVowels(str) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const strArr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+  const arr = strArr.split('');
+  const newArr = [...arr];
+  const arrPol = newArr.reverse();
+  for (let i = 0; i < arr.length; i += 1) {
+    if (arr[i] !== arrPol[i]) return false;
+  }
+  return true;
 }
-
 /**
  * Find the longest word in the sentence. If there are multiple longest words,
  * the function returns the first one encountered.
@@ -351,8 +361,13 @@ function isPalindrome(/* str */) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  const arr = sentence.split(' ');
+  let maxWord = arr[0];
+  for (let i = 1; i < arr.length; i += 1) {
+    if (maxWord.length < arr[i].length) maxWord = arr[i];
+  }
+  return maxWord;
 }
 
 /**
